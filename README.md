@@ -1,4 +1,4 @@
-generic-datastore
+generic-queue
 =================================
 
 ## Prerequisites
@@ -8,15 +8,60 @@ generic-datastore
 
 ## How to use
 
+### Get started
+
+you can get this library from my Maven2 repository.
+The latest version is 0.1.0 right now.
+
+```
+URL      : http://mychaelstyle.github.io/m2repos/
+Group    : com.mychaelstyle.common
+Artifact : generic-queue
+```
+
+#### when using gradle
+
+add repository and dependency to your build.gradle.
+
+```
+repositories {
+  mavenCentral()
+  maven {
+    url "http://mychaelstyle.github.io/m2repos/"
+  }
+}
+...
+dependencies {
+  compile 'com.mychaelstyle.common:generic-queue:0.1.0'
+}
+```
+
+### How to use
+
+see JUnit test case, com.mychaelstyle.common.GenericQueueTest.java.
+
+#### when using SBT
+
+add resolvers and libraryDependencies to your build.sbt.
+
+```
+resolvers += "Mychaelstyle common lib" at "http://mychaelstyle.github.io/m2repos/"
+
+
+libraryDependencies ++= Seq(
+  "com.mychaelstyle.common" % "generic-queue" % "0.1.0"
+)
+```
+
 
 ## Development
 
 set environment valuable for AWS access.
 
 ```
-$ export AWS_ACCESS_KEY='your access key'
-$ export AWS_SECRET_KEY='your secret key'
-$ export AWS_SQS_ENDPOINT='aws endpoint'
+$ export AWS_ACCESS_KEY='your_access_key'
+$ export AWS_SECRET_KEY='your_secret_key'
+$ export AWS_ENDPOINT_SQS='sqs.ap-northeast-1.amazonaws.com '
 ```
 
 clone this repository to your machine.

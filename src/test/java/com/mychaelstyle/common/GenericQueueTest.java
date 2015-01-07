@@ -51,7 +51,7 @@ public class GenericQueueTest {
         config.put(GenericQueue.PARAM_PROVIDER, "com.mychaelstyle.common.queue.AwsSQS");
         config.put(AwsSQS.PARAM_ACCESS_KEY,System.getenv("AWS_ACCESS_KEY"));
         config.put(AwsSQS.PARAM_SECRET_KEY, System.getenv("AWS_SECRET_KEY"));
-        config.put(AwsSQS.PARAM_ENDPOINT, System.getenv("AWS_SQS_ENDPOINT"));
+        config.put(AwsSQS.PARAM_ENDPOINT, System.getenv("AWS_ENDPOINT_SQS"));
         return config;
     }
 
@@ -108,24 +108,28 @@ public class GenericQueueTest {
              assertEquals(name,QUEUE_NAME);
 
              this.queue.add(new JSONObject("{param:100}"));
+             Thread.sleep(2000);
 
              JSONArray arr = this.queue.poll(1);
              assertNotNull(arr);
              assertTrue(arr.length()>0);
 
              this.queue.add(new JSONObject("{param:100}"));
-             this.queue.add(new JSONObject("{param:200}"));
-             arr = this.queue.peek(2);
+             Thread.sleep(2000);
+
+             arr = this.queue.peek(1);
              assertNotNull(arr);
-             assertTrue(arr.length()==2);
-             this.queue.delete();
              this.queue.delete();
              assertTrue(0==this.queue.size());
 
              this.queue.add(new JSONObject("{param:200}"));
+             Thread.sleep(2000);
+
              arr = this.queue.peek(1);
              JSONObject obj = arr.getJSONObject(0);
              this.queue.delete(obj);
+             Thread.sleep(2000);
+
              assertTrue(0==this.queue.size());
 
              GenericQueue.Provider provider = this.queue.getProvider();

@@ -55,19 +55,6 @@ public class AwsSQSTest {
 
     /**
      * Test method for {@link com.mychaelstyle.common.queue.AwsSQS#initialize(org.json.JSONObject)}.
-     */
-    @Test
-    public void testInitialize() {
-        JSONObject config = GenericQueueTest.getConfig();
-        try {
-            queue.initialize(config);
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail(e.getClass().getName()+" "+e.getMessage());
-        }
-    }
-
-    /**
      * Test method for {@link com.mychaelstyle.common.queue.AwsSQS#add(org.json.JSONObject)}.
      * Test method for {@link com.mychaelstyle.common.queue.AwsSQS#poll(int)}.
      * Test method for {@link com.mychaelstyle.common.queue.AwsSQS#peek(int)}.
@@ -77,6 +64,13 @@ public class AwsSQSTest {
      */
     @Test
     public void test() {
+        JSONObject config = GenericQueueTest.getConfig();
+        try {
+            queue.initialize(config);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail(e.getClass().getName()+" "+e.getMessage());
+        }
          try {
 
              this.queue.add(new JSONObject("{param:100}"));
