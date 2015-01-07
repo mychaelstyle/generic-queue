@@ -38,6 +38,7 @@ sourceSets {
 
 dependencies {
   testCompile 'junit:junit:4.11'
+  compile 'org.json:json:20141113'
   compile 'com.amazonaws:aws-java-sdk:1.9.13'
 }
 
@@ -80,4 +81,14 @@ check << {
 task wrapper(type: Wrapper) {
   gradleVersion = '2.2'
 }
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      file('../m2repos').mkdirs()
+      repository(url: 'file:../m2repos')
+    }
+  }
+}
+
 
