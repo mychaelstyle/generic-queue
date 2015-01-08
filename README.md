@@ -6,8 +6,6 @@ generic-queue
 * Java (> v1.7.0)
 * Gradle (> v2.2.0)
 
-## How to use
-
 ### Get started
 
 you can get this library from my Maven2 repository.
@@ -36,10 +34,6 @@ dependencies {
 }
 ```
 
-### How to use
-
-see JUnit test case, com.mychaelstyle.common.GenericQueueTest.java.
-
 #### when using SBT
 
 add resolvers and libraryDependencies to your build.sbt.
@@ -53,6 +47,9 @@ libraryDependencies ++= Seq(
 )
 ```
 
+### How to use
+
+see JUnit test case, com.mychaelstyle.common.GenericQueueTest.java.
 
 ## Development
 
